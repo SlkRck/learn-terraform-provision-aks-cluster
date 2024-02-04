@@ -9,7 +9,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "default" {
   name     = "${random_pet.prefix.id}-rg"
-  location = "West US 2"
+  location = "West US"
 
   tags = {
     environment = "Demo"
@@ -21,7 +21,7 @@ resource "azurerm_kubernetes_cluster" "default" {
   location            = azurerm_resource_group.default.location
   resource_group_name = azurerm_resource_group.default.name
   dns_prefix          = "${random_pet.prefix.id}-k8s"
-  kubernetes_version  = "1.26.3"
+  kubernetes_version  = "1.25"
 
   default_node_pool {
     name            = "default"
